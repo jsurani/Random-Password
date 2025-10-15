@@ -1,0 +1,56 @@
+let letter = "j";
+printToScreen(letter.charCodeAt());
+let number = 120;
+printToScreen(String.fromCharCode(number));
+
+
+
+let password = ""
+let word = ""
+for (let i = 0;i < 10;i++){
+  let letter = Math.floor(Math.random()*26) + "a".charCodeAt();
+  let letters = String.fromCharCode(letter)
+  word += letters
+ 
+}
+
+let numbers = ""
+for (let i = 0; i < 10 ; i++){
+  let num = Math.floor(Math.random()*10)
+  numbers += num
+}
+printToScreen(numbers);
+printToScreen(password)
+
+for (let i = 0; i < 10 ; i++){
+  password += (word[i])
+  password += (numbers[i])
+}
+
+printToScreen(password);
+
+
+
+function printToScreen(text) {
+  let r = Math.floor((Math.random() * 155));
+  let g = Math.floor((Math.random() * 155));
+  let b = Math.floor((Math.random() * 155));
+  const svg = d3.select("body")
+    .append("svg")
+    .attr("width", 1500)
+    .attr("height", 75);
+  
+  svg.append("text")
+    .attr("y", 37.5)
+    .attr("width", 450)
+    .attr("height", 75)
+    .attr("x", -1000)
+    .attr("font-weight", "bold")
+    .attr("font-size", "24px")
+    .attr("fill", `rgb(${r},${g},${b}`)
+    .attr("font-family", "Times New Roman")
+    .text(text)
+    .transition()
+    .duration(1000)
+    .attr("x", 37.5);
+}
